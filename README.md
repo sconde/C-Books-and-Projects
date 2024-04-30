@@ -11,7 +11,7 @@ Each subdirectory is named after the book or project it represents. Within each 
 
 ## Objectives
 
-This repository aims to:
+This repository aimed/aims to:
 - Track my progress as I learn C programming.
 - Serve as a reference for specific concepts and coding techniques in C.
 - Share my learning experiences with others who might find it useful.
@@ -19,9 +19,7 @@ This repository aims to:
 ## Books and Projects
 
 Here's a list of books and projects currently included in this repository:
-- [Book/Project Name 1]
-- [Book/Project Name 2]
-- [Book/Project Name 3]
+- [C Primer Plus](./C-Primer-Plus/README.md)
 - *More to be added as I progress.*
 
 ## How to Use This Repository
