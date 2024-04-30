@@ -2,3 +2,4 @@
 
 add_subdirectory(intro_c)
 add_subdirectory(data_and_c)
+add_subdirectory(char_string_formatted_io)
