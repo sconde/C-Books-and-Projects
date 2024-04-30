@@ -1,2 +1,10 @@
 
 add_executable(week_year.x ${CMAKE_CURRENT_SOURCE_DIR}/print_week_in_year.c)
+add_executable(exec2.1.x ${CMAKE_CURRENT_SOURCE_DIR}/exec2.1.c)
+# add_executable(exec2.2.x ${CMAKE_CURRENT_SOURCE_DIR}/exec2.2.c)
+add_executable(exec2.3.x ${CMAKE_CURRENT_SOURCE_DIR}/exec2.3.c)
+add_executable(exec2.4.x ${CMAKE_CURRENT_SOURCE_DIR}/exec2.4.c)
+add_executable(exec2.5.x ${CMAKE_CURRENT_SOURCE_DIR}/exec2.5.c)
+add_executable(exec2.6.x ${CMAKE_CURRENT_SOURCE_DIR}/exec2.6.c)
+add_executable(exec2.7.x ${CMAKE_CURRENT_SOURCE_DIR}/exec2.7.c)
+add_executable(exec2.8.x ${CMAKE_CURRENT_SOURCE_DIR}/exec2.8.c)
