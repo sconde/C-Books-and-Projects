@@ -1,1 +1,8 @@
 add_executable(exec3.1.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.1.c)
+add_executable(exec3.2.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.2.c)
+add_executable(exec3.3.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.3.c)
+add_executable(exec3.4.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.4.c)
+add_executable(exec3.5.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.5.c)
+add_executable(exec3.6.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.6.c)
+add_executable(exec3.7.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.7.c)
+add_executable(exec3.8.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.8.c)
