@@ -1,0 +1,1 @@
+add_executable(exec3.1.x ${CMAKE_CURRENT_SOURCE_DIR}/exec3.1.c)
