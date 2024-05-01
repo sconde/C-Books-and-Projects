@@ -1,0 +1,8 @@
+add_executable(exec8.1.c ${CMAKE_CURRENT_SOURCE_DIR}/exec8.1.c)
+add_executable(exec8.2.c ${CMAKE_CURRENT_SOURCE_DIR}/exec8.2.c)
+add_executable(exec8.3.c ${CMAKE_CURRENT_SOURCE_DIR}/exec8.3.c)
+add_executable(exec8.4.c ${CMAKE_CURRENT_SOURCE_DIR}/exec8.4.c)
+add_executable(exec8.5.c ${CMAKE_CURRENT_SOURCE_DIR}/exec8.5.c)
+# add_executable(exec8.6.c ${CMAKE_CURRENT_SOURCE_DIR}/exec8.6.c)
+# add_executable(exec8.7.c ${CMAKE_CURRENT_SOURCE_DIR}/exec8.7.c)
+add_executable(exec8.8.c ${CMAKE_CURRENT_SOURCE_DIR}/exec8.8.c)
