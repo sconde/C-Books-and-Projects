@@ -1,0 +1,8 @@
+add_executable(exec15.1.a.x. ${CMAKE_CURRENT_SOURCE_DIR}/exec15.1.a.c)
+add_executable(exec15.1.b.x. ${CMAKE_CURRENT_SOURCE_DIR}/exec15.1.b.c)
+add_executable(exec15.2.x. ${CMAKE_CURRENT_SOURCE_DIR}/exec15.2.c)
+add_executable(exec15.3.x. ${CMAKE_CURRENT_SOURCE_DIR}/exec15.3.c)
+add_executable(exec15.4.x. ${CMAKE_CURRENT_SOURCE_DIR}/exec15.4.c)
+add_executable(exec15.5.x. ${CMAKE_CURRENT_SOURCE_DIR}/exec15.5.c)
+add_executable(exec15.6.x. ${CMAKE_CURRENT_SOURCE_DIR}/exec15.6.c)
+add_executable(exec15.7.x. ${CMAKE_CURRENT_SOURCE_DIR}/exec15.7.c)
