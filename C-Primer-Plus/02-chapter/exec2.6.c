@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-  int toes = 10;
+  const int toes = 10;
   int twice_toes = 2 * toes;
   int toes_squared = toes * toes;
 

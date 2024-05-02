@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-  int asciiCode;
+  int asciiCode = 0;
 
   printf("Enter an ASCII code value: ");
   scanf("%d", &asciiCode);

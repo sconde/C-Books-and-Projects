@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,modernize-*,performance-*,-*'
+Checks:         'modernize-*,cppcoreguidelines-*,google-*'
 WarningsAsErrors: ''
 HeaderFileExtensions:
   - ''

@@ -1,7 +1,8 @@
+#include <math.h>
 #include <stdio.h>
 
 int main() {
-  double num;
+  double num = NAN;
 
   printf("Enter a floating-point value: ");
   scanf("%lf", &num);
