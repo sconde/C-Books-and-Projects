@@ -28,3 +28,4 @@ endif()
 endif()
 
 add_subdirectory(C-Primer-Plus)
+add_subdirectory(pathfinding-maze-solver)

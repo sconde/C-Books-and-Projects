@@ -1,0 +1,24 @@
+[
+  {
+    "name": "modern-clang",
+
+    "generator": "Ninja",
+
+    "compilers": {
+      "C": "/usr/local/opt/llvm@18/bin/clang",
+      "CXX": "/usr/local/opt/llvm@18/bin/clang++",
+      "Fortran": "gfortran"
+    }
+  },
+  {
+    "name": "VS 17 2022 amd64",
+    "generator": "Visual Studio 17 2022",
+    "host_architecture": "x64",
+    "environmentSetupScript": "& \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\"",
+    "target_architecture": "x64",
+    "compilers": {
+      "C": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/bin/Hostx64/x64/cl.exe",
+      "CXX": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/bin//Hostx64/x64/cl.exe"
+    }
+  }
+]
