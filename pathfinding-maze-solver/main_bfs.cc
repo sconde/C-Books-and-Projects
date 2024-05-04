@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <ctime>
 #include <iostream>
 #include <queue>
@@ -12,40 +13,37 @@ struct Point {
   int x, y;
 };
 
-auto isValid(int x, int y, const Vec2D<int>& maze) -> bool {
-  std::size_t rows = maze.size();
-  std::size_t cols = maze[0].size();
+constexpr auto isValid(const int x, const int y,
+                       const Vec2D<int>& maze) -> bool {
+  const std::size_t rows = maze.size();
+  const std::size_t cols = maze[0].size();
 
   return (x >= 0 && x < rows && y >= 0 && y < cols && maze[x][y] == 0);
 }
 
 // Function to initialize a random maze
-auto initializeRandomMaze(int rows, int cols, Point& start,
-                          Point& end) -> Vec2D<int> {
-  // Initialize maze grid with all passages (0)
-  Vec2D<int> maze(rows, std::vector<int>(cols, 0));
-
-  // Random number generator
-  std::mt19937 rng(time(nullptr));  // Seed with current time
-  // Uniform distribution for generating walls/passages
-  std::uniform_int_distribution<int> dist(0, 1);
+auto initializeRandomMaze(Vec2D<int>& maze, const int rows, const int cols,
+                          Point& start, Point& end) -> void {
+  for (auto& el : maze) {
+    for (auto& i : el) {
+      i = 0;
+    }
+  }
 
   // Set start and end points
   start = {0, 0};
   end = {rows - 1, cols - 1};
 
-  // Randomly generate walls in the maze
-  std::generate(maze.begin(), maze.end(), [&]() {
-    std::vector<int> row(cols, 0);
-    std::generate(row.begin(), row.end(),
-                  [&]() { return (dist(rng) == 0) ? 0 : 1; });
-    return row;
-  });
+  for (int i = 0; i < rows; ++i) {
+    for (int j = 0; j < cols; ++j) {
+      if (!(i == start.x && j == start.y) && !(i == end.x && j == end.y)) {
+        maze[i][j] = std::rand() % 2;  // Generate random walls/passages
+      }
+    }
+  }
 
   maze[start.x][start.y] = 0;  // Start point
   maze[end.x][end.y] = 0;      // End point
-
-  return maze;
 }
 
 // Function to print the maze
@@ -60,7 +58,9 @@ void printMaze(const Vec2D<int>& maze) {
 }
 
 // BFS function to find the shortest path in the maze
-auto bfs(const Vec2D<int>& maze, Point start, Point end) -> std::vector<Point> {
+auto bfs(const Vec2D<int>& maze, std::vector<Point>& path, const Point start,
+         const Point end) -> void {
+  // set the directions
   static const std::vector<Point> directions = {
       {-1, 0}, {0, 1}, {1, 0}, {0, 1}};
 
@@ -74,26 +74,22 @@ auto bfs(const Vec2D<int>& maze, Point start, Point end) -> std::vector<Point> {
 
   while (!q.empty()) {
     Point curr = q.front();
-
     q.pop();
 
     if (curr.x == end.x && curr.y == end.y) {
-      // Destination reached, reconstruct the path
-      std::vector<Point> path;
-
       while (!(curr.x == start.x && curr.y == start.y)) {
         path.push_back(curr);
         curr = parent[curr.x][curr.y];
       }
 
-      path.push_back(start);
+      path.emplace_back(start);
       std::reverse(path.begin(), path.end());
-      return path;
+      return;
     }
 
-    for (const Point& dir : directions) {
-      int new_x = curr.x + dir.x;
-      int new_y = curr.y + dir.y;
+    for (const auto& [x, y] : directions) {
+      const int new_y = curr.y + y;
+      const int new_x = curr.x + x;
       if (isValid(new_x, new_y, maze) && !visited[new_x][new_y]) {
         q.push({new_x, new_y});
         visited[new_x][new_y] = true;
@@ -103,24 +99,27 @@ auto bfs(const Vec2D<int>& maze, Point start, Point end) -> std::vector<Point> {
   }
 
   // no path found
-  return {};
+  // return {};
 
 }  // bfs
 
 int main(int argc, char* argv[]) {
   // Define maze dimensions
-  constexpr int rows = 5;
-  constexpr int cols = 5;
+  constexpr int rows = 10000;
+  constexpr int cols = 10000;
+
+  Vec2D<int> maze(rows, std::vector<int>(cols, 0));
 
   // Initialize random maze
   Point start{}, end{};
-  Vec2D<int> maze = initializeRandomMaze(rows, cols, start, end);
+  initializeRandomMaze(maze, rows, cols, start, end);
 
 #ifdef DEBUG
   printMaze(maze);
 #endif
 
-  std::vector<Point> path = bfs(maze, start, end);
+  std::vector<Point> path;
+  bfs(maze, path, start, end);
 
   if (path.empty()) {
     std::cout << "No path found!" << "\n";
