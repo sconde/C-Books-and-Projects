@@ -12,23 +12,23 @@ struct Point {
   int x, y;
 };
 
-bool isValid(int x, int y, const std::vector<std::vector<int>>& maze) {
-  int rows = maze.size();
-  int cols = maze[0].size();
+auto isValid(int x, int y, const Vec2D<int>& maze) -> bool {
+  std::size_t rows = maze.size();
+  std::size_t cols = maze[0].size();
 
   return (x >= 0 && x < rows && y >= 0 && y < cols && maze[x][y] == 0);
 }
 
 // Function to initialize a random maze
-std::vector<std::vector<int>> initializeRandomMaze(int rows, int cols,
-                                                   Point& start, Point& end) {
+auto initializeRandomMaze(int rows, int cols, Point& start,
+                          Point& end) -> Vec2D<int> {
   // Initialize maze grid with all passages (0)
-  vector<vector<int>> maze(rows, vector<int>(cols, 0));
+  Vec2D<int> maze(rows, std::vector<int>(cols, 0));
 
   // Random number generator
-  mt19937 rng(time(nullptr));  // Seed with current time
-  uniform_int_distribution<int> dist(
-      0, 1);  // Uniform distribution for generating walls/passages
+  std::mt19937 rng(time(nullptr));  // Seed with current time
+  // Uniform distribution for generating walls/passages
+  std::uniform_int_distribution<int> dist(0, 1);
 
   // Set start and end points
   start = {0, 0};
@@ -48,14 +48,12 @@ std::vector<std::vector<int>> initializeRandomMaze(int rows, int cols,
   return maze;
 }
 // BFS function to find the shortest path in the maze
-vector<Point> bfs(const std::vector<std::vector<int>>& maze, Point start,
-                  Point end) {
-  static const vector<Point> directions = {{-1, 0}, {0, 1}, {1, 0}, {0, 1}};
+auto bfs(const Vec2D<int>& maze, Point start, Point end) -> std::vector<Point> {
+  static const std::vector<Point> directions = {
+      {-1, 0}, {0, 1}, {1, 0}, {0, 1}};
 
-  std::vector<std::vector<bool>> visited(maze.size(),
-                                         vector<bool>(maze[0].size()), false);
-  std::vector<std::vector<Point>> parent(maze.size(),
-                                         vector<Point>(maze[0].size()));
+  Vec2D<bool> visited(maze.size(), std::vector<bool>(maze[0].size(), false));
+  Vec2D<Point> parent(maze.size(), std::vector<Point>(maze[0].size()));
 
   std::queue<Point> q;
   q.push(start);
@@ -69,7 +67,7 @@ vector<Point> bfs(const std::vector<std::vector<int>>& maze, Point start,
 
     if (curr.x == end.x && curr.y == end.y) {
       // Destination reached, reconstruct the path
-      vector<Point> path;
+      std::vector<Point> path;
 
       while (!(curr.x == start.x && curr.y == start.y)) {
         path.push_back(curr);
@@ -77,7 +75,7 @@ vector<Point> bfs(const std::vector<std::vector<int>>& maze, Point start,
       }
 
       path.push_back(start);
-      reverse(path.begin(), path.end());
+      std::reverse(path.begin(), path.end());
       return path;
     }
 
@@ -97,29 +95,25 @@ vector<Point> bfs(const std::vector<std::vector<int>>& maze, Point start,
 
 }  // bfs
 
-int int main(int argc, char* argv[]) {
-  // Example maze represented as 2D grid {0 for passage, 1 for wall}
-  std::vector<vector<int>> maze = {{0, 1, 0, 0, 0},
-                                   {0, 1, 0, 1, 0},
-                                   {0, 0, 0, 1, 0},
-                                   {0, 1, 0, 0, 0},
-                                   {0, 0, 0, 1, 0}};
+int main(int argc, char* argv[]) {
+  // Define maze dimensions
+  constexpr int rows = 5;
+  constexpr int cols = 5;
 
-  Point start = {0, 0};  // Start point
-  Point end = {4, 4};    // End point
+  // Initialize random maze
+  Point start{}, end{};
+  Vec2D<int> maze = initializeRandomMaze(rows, cols, start, end);
 
   std::vector<Point> path = bfs(maze, start, end);
 
   if (path.empty()) {
-    cout << "No path found!" << endl;
+    std::cout << "No path found!" << "\n";
   } else {
-    cout << "Path found:" << endl;
+    std::cout << "Path found:" << "\n";
     for (const Point& p : path) {
-      cout << "(" << p.x << ", " << p.y << ") ";
+      std::cout << "(" << p.x << ", " << p.y << ") ";
     }
-    cout << endl;
+    std::cout << "\n";
   }
   return 0;
-}
-return 0;
 }
