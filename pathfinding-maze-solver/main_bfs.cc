@@ -116,7 +116,9 @@ int main(int argc, char* argv[]) {
   Point start{}, end{};
   Vec2D<int> maze = initializeRandomMaze(rows, cols, start, end);
 
+#ifdef DEBUG
   printMaze(maze);
+#endif
 
   std::vector<Point> path = bfs(maze, start, end);
 
