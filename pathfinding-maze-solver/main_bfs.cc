@@ -33,20 +33,32 @@ auto initializeRandomMaze(int rows, int cols, Point& start,
   // Set start and end points
   start = {0, 0};
   end = {rows - 1, cols - 1};
+
+  // Randomly generate walls in the maze
+  std::generate(maze.begin(), maze.end(), [&]() {
+    std::vector<int> row(cols, 0);
+    std::generate(row.begin(), row.end(),
+                  [&]() { return (dist(rng) == 0) ? 0 : 1; });
+    return row;
+  });
+
   maze[start.x][start.y] = 0;  // Start point
   maze[end.x][end.y] = 0;      // End point
 
-  // Randomly generate walls in the maze
-  for (int i = 0; i < rows; ++i) {
-    for (int j = 0; j < cols; ++j) {
-      if (!(i == start.x && j == start.y) && !(i == end.x && j == end.y)) {
-        maze[i][j] = dist(rng);  // Generate random walls/passages
-      }
-    }
-  }
-
   return maze;
 }
+
+// Function to print the maze
+void printMaze(const Vec2D<int>& maze) {
+  for (const auto& row : maze) {
+    for (int cell : row) {
+      std::cout << (cell == 0 ? " " : "#")
+                << " ";  // Print passages as space and walls as #
+    }
+    std::cout << "\n";
+  }
+}
+
 // BFS function to find the shortest path in the maze
 auto bfs(const Vec2D<int>& maze, Point start, Point end) -> std::vector<Point> {
   static const std::vector<Point> directions = {
@@ -103,6 +115,8 @@ int main(int argc, char* argv[]) {
   // Initialize random maze
   Point start{}, end{};
   Vec2D<int> maze = initializeRandomMaze(rows, cols, start, end);
+
+  printMaze(maze);
 
   std::vector<Point> path = bfs(maze, start, end);
 
