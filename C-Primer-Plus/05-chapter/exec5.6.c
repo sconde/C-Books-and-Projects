@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-  int num, sum = 0;
+  int num = 0, sum = 0;
 
   printf("Enter a positive integer: ");
   scanf("%d", &num);

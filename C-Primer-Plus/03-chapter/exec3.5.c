@@ -1,5 +1,7 @@
 #include <stdio.h>
-#define SECONDS_PER_YEAR 31560000  // 1 year = SECONDS_PER_YEAR seconds
+enum {
+  SECONDS_PER_YEAR = 31560000  // 1 year = SECONDS_PER_YEAR seconds
+};
 
 int main() {
   int age = 0;

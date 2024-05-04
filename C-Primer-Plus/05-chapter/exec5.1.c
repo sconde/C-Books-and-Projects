@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-#define MINUTES_PER_HOUR 60
+enum { MINUTES_PER_HOUR = 60 };
 
 int main() {
-  int minutes;
+  int minutes = 0;
 
   while (1) {
     printf("Enter time in minutes (0 or less to exit): ");

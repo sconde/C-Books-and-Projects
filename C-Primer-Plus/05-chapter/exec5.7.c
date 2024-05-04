@@ -1,9 +1,10 @@
+#include <math.h>
 #include <stdio.h>
 
 double cube(double num) { return num * num * num; }
 
 int main() {
-  double number;
+  double number = NAN;
 
   printf("Enter a number: ");
   scanf("%lf", &number);

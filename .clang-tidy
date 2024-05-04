@@ -1,5 +1,11 @@
 ---
-Checks:         'modernize-*,cppcoreguidelines-*,google-*'
+Checks: 'bugprone,
+        modernize-*,
+        cppcoreguidelines-*,
+        google-*,
+        llvm-*,
+        performance-*,
+        clang-analyzer'
 WarningsAsErrors: ''
 HeaderFileExtensions:
   - ''

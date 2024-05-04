@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-  int secondOperand, firstOperand;
+  int secondOperand = 0, firstOperand = 0;
 
   printf("This program computes moduli.\n");
   printf("Enter an integer to serve as the second operand: ");

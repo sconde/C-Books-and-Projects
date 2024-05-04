@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-option(ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
+option(ENABLE_CLANG_TIDY "Enable clang-tidy" ON)
 
 if (ENABLE_CLANG_TIDY)
 

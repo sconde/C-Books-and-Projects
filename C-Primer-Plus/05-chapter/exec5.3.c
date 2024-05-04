@@ -1,4 +1,5 @@
 #include <stdio.h>
+enum { DAYS_IN_WEEK = 7 };
 
 int main() {
   int days;
@@ -11,8 +12,9 @@ int main() {
       break;
     }
 
-    int weeks = days / 7;
-    int remainingDays = days % 7;
+    int weeks = days / DAYS_IN_WEEK;
+
+    int remainingDays = days % DAYS_IN_WEEK;
 
     printf("%d days are %d weeks, %d days.\n", days, weeks, remainingDays);
   }

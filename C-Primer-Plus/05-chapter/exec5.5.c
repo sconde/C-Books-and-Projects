@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(void) {
-  int count, sum, num;
+  int count = 0, sum = 0, num = 0;
 
   printf("Enter the number of integers to calculate the sum for: ");
   scanf("%d", &count);

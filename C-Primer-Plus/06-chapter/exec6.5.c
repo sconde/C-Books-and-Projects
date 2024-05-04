@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-  char input;
+  char input = 0;
   printf("Enter an uppercase letter: ");
   scanf(" %c", &input); // Read the uppercase letter
 
@@ -19,7 +19,7 @@ int main() {
     }
 
     // Print letters in descending order
-    for (char letter = 'A' + row; letter >= 'A'; letter--) {
+    for (int letter = 'A' + row; letter >= 'A'; letter--) {
       printf("%c", letter);
     }
 

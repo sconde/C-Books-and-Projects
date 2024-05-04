@@ -1,10 +1,12 @@
+#include <math.h>
 #include <stdio.h>
 
 void Temperatures(double fahrenheit) {
   const double CELSIUS_SCALE = 5.0 / 9.0;
   const double KELVIN_OFFSET = 273.16;
 
-  double celsius = CELSIUS_SCALE * (fahrenheit - 32.0);
+  const double FAHRENHEIT_OFFSET = 32.0;
+  double celsius = CELSIUS_SCALE * (fahrenheit - FAHRENHEIT_OFFSET);
   double kelvin = celsius + KELVIN_OFFSET;
 
   printf("Fahrenheit: %.2lf\n", fahrenheit);
@@ -13,7 +15,7 @@ void Temperatures(double fahrenheit) {
 }
 
 int main() {
-  double fahrenheit;
+  double fahrenheit = NAN;
 
   printf("Enter a Fahrenheit temperature (q to quit): ");
   while (scanf("%lf", &fahrenheit) == 1) {
