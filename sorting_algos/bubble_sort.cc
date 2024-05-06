@@ -1,3 +1,4 @@
+#include <chrono>
 #include <iostream>
 #include <vector>
 
@@ -17,11 +18,23 @@ void bubbleSort(std::vector<int>& arr) {
 
 int main() {
   std::vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
+
+  // Measure the time taken by the bubble sort algorithm
+  auto start = std::chrono::high_resolution_clock::now();
   bubbleSort(arr);
+  auto end = std::chrono::high_resolution_clock::now();
+
   std::cout << "Sorted array: ";
-  for (int i : arr) {
-    std::cout << i << " ";
+  for (int i = 0; i < arr.size(); i++) {
+    std::cout << arr[i] << " ";
   }
   std::cout << std::endl;
+
+  // Calculate and print the elapsed time
+  auto duration =
+      std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+  std::cout << "Time taken by bubble sort: " << duration.count()
+            << " microseconds" << std::endl;
+
   return 0;
 }
