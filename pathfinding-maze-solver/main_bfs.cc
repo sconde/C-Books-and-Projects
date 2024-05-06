@@ -83,7 +83,7 @@ auto bfs(const Vec2D<int>& maze, std::vector<Point>& path, const Point start,
       }
 
       path.emplace_back(start);
-      std::reverse(path.begin(), path.end());
+      std::reverse(path.begin(), path.end());  // O(n)
       return;
     }
 
@@ -97,9 +97,6 @@ auto bfs(const Vec2D<int>& maze, std::vector<Point>& path, const Point start,
       }
     }
   }
-
-  // no path found
-  // return {};
 
 }  // bfs
 

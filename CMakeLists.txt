@@ -30,3 +30,4 @@ add_compile_options(-pg -fno-omit-frame-pointer)
 
 add_subdirectory(C-Primer-Plus)
 add_subdirectory(pathfinding-maze-solver)
+add_subdirectory(sorting_algos)

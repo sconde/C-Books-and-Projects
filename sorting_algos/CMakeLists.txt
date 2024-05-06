@@ -1,0 +1,1 @@
+add_executable(bubble_sort.x ${CMAKE_CURRENT_SOURCE_DIR}/bubble_sort.cc)
